@@ -1,0 +1,13 @@
+../Core/Src/tb6612fng/tb6612fng.c:10:6:tbSetStndbyPin	16	static
+../Core/Src/tb6612fng/tb6612fng.c:14:6:tbSetAin1Pin	16	static
+../Core/Src/tb6612fng/tb6612fng.c:18:6:tbSetAin2Pin	16	static
+../Core/Src/tb6612fng/tb6612fng.c:22:6:tbPmwStart	8	static
+../Core/Src/tb6612fng/tb6612fng.c:30:6:tbSetDutyCycle	24	static
+../Core/Src/tb6612fng/tb6612fng.c:34:6:tbResetDutyCycle	4	static
+../Core/Src/tb6612fng/tb6612fng.c:38:6:tbMotorCw	24	static
+../Core/Src/tb6612fng/tb6612fng.c:54:6:tbMotorCcw	24	static
+../Core/Src/tb6612fng/tb6612fng.c:70:6:tbMotorShortBrake	8	static
+../Core/Src/tb6612fng/tb6612fng.c:79:6:tbMotorStop	8	static
+../Core/Src/tb6612fng/tb6612fng.c:88:6:tbMotorStndby	8	static
+../Core/Src/tb6612fng/tb6612fng.c:98:6:tbMotorDrive	16	static
+../Core/Src/tb6612fng/tb6612fng.c:109:6:tbMotorDriveRevolutions	24	static

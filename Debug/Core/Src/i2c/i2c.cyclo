@@ -1,0 +1,8 @@
+../Core/Src/i2c/i2c.c:12:6:clearWriteBuf	2
+../Core/Src/i2c/i2c.c:19:6:clearReadBuf	2
+../Core/Src/i2c/i2c.c:26:5:i2cApWrite	2
+../Core/Src/i2c/i2c.c:41:5:i2cApRead	2
+../Core/Src/i2c/i2c.c:55:6:i2cApDelay	1
+../Core/Src/i2c/i2c.c:61:5:i2cBqWrite	2
+../Core/Src/i2c/i2c.c:76:5:i2cBqRead	2
+../Core/Src/i2c/i2c.c:90:6:i2cBqDelay	1

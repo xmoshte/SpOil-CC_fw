@@ -1,0 +1,15 @@
+../Core/Src/vnh5180a/vnh5180a.c:9:6:vnSetInAPin	16	static
+../Core/Src/vnh5180a/vnh5180a.c:13:6:vnSetInBPin	16	static
+../Core/Src/vnh5180a/vnh5180a.c:17:15:vnReadDiagAPin	8	static
+../Core/Src/vnh5180a/vnh5180a.c:26:15:vnReadDiagBPin	8	static
+../Core/Src/vnh5180a/vnh5180a.c:35:6:vnCheckMotorStatus	16	static
+../Core/Src/vnh5180a/vnh5180a.c:52:6:vnPmwStart	8	static
+../Core/Src/vnh5180a/vnh5180a.c:56:6:vnSetDutyCycle	24	static
+../Core/Src/vnh5180a/vnh5180a.c:60:6:vnResetDutyCycle	4	static
+../Core/Src/vnh5180a/vnh5180a.c:65:6:vnMotorCw	32	static
+../Core/Src/vnh5180a/vnh5180a.c:91:6:vnMotorCcw	32	static
+../Core/Src/vnh5180a/vnh5180a.c:117:6:vnMotorBrakeToGnd	16	static
+../Core/Src/vnh5180a/vnh5180a.c:136:6:vnMotorBrakeToVcc	16	static
+../Core/Src/vnh5180a/vnh5180a.c:156:6:vnMotorDrive	16	static
+../Core/Src/vnh5180a/vnh5180a.c:166:6:vnMotorDriveDuration	24	static
+../Core/Src/vnh5180a/vnh5180a.c:174:6:csEnOrDis	16	static

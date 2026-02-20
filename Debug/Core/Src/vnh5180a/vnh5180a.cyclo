@@ -1,0 +1,15 @@
+../Core/Src/vnh5180a/vnh5180a.c:9:6:vnSetInAPin	1
+../Core/Src/vnh5180a/vnh5180a.c:13:6:vnSetInBPin	1
+../Core/Src/vnh5180a/vnh5180a.c:17:15:vnReadDiagAPin	2
+../Core/Src/vnh5180a/vnh5180a.c:26:15:vnReadDiagBPin	2
+../Core/Src/vnh5180a/vnh5180a.c:35:6:vnCheckMotorStatus	3
+../Core/Src/vnh5180a/vnh5180a.c:52:6:vnPmwStart	1
+../Core/Src/vnh5180a/vnh5180a.c:56:6:vnSetDutyCycle	1
+../Core/Src/vnh5180a/vnh5180a.c:60:6:vnResetDutyCycle	1
+../Core/Src/vnh5180a/vnh5180a.c:65:6:vnMotorCw	3
+../Core/Src/vnh5180a/vnh5180a.c:91:6:vnMotorCcw	3
+../Core/Src/vnh5180a/vnh5180a.c:117:6:vnMotorBrakeToGnd	2
+../Core/Src/vnh5180a/vnh5180a.c:136:6:vnMotorBrakeToVcc	2
+../Core/Src/vnh5180a/vnh5180a.c:156:6:vnMotorDrive	3
+../Core/Src/vnh5180a/vnh5180a.c:166:6:vnMotorDriveDuration	1
+../Core/Src/vnh5180a/vnh5180a.c:174:6:csEnOrDis	4
