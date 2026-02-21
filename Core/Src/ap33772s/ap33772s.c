@@ -334,6 +334,8 @@ ap_ref ap_init(const struct ap_bus_delegate *delegate)
     dev->index_avs = -1;
     dev->apbus = *delegate;
 
+    logString("AP33772S: I2C1 bus initialised\r\n");
+
     return dev;
 }
 

@@ -110,6 +110,6 @@ void tbMotorDriveRevolutions(dbyte rpm, byte dir, byte rev){
 	qbyte msec = ((qbyte)rev * 60000) / rpm;
 
     tbMotorDrive(rpm, dir);
-    HAL_Delay(msec);
+    osDelay(msec);
     tbMotorStop();
 };

@@ -24,11 +24,15 @@ C_DEPS :=
 SUBDIRS := \
 Core/Src/ap33772s \
 Core/Src/bq25798 \
+Core/Src \
 Core/Src/i2c \
 Core/Src/log \
-Core/Src \
 Core/Src/tb6612fng \
 Core/Src/vnh5180a \
 Core/Startup \
 Drivers/STM32F1xx_HAL_Driver/Src \
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS \
+Middlewares/Third_Party/FreeRTOS/Source \
+Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 \
+Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang \
 

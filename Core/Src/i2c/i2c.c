@@ -54,7 +54,8 @@ int i2cApRead(void *ctx, byte cmd, byte* data, size_t len){
 
 void i2cApDelay(void *ctx, qbyte usec){
 	(void)ctx;
-	HAL_Delay(usec);
+//	HAL_Delay(usec);
+	osDelay(usec);
 }
 
 
@@ -89,6 +90,6 @@ int i2cBqRead(void *ctx, byte reg, byte* data, size_t len){
 
 void i2cBqDelay(void *ctx, qbyte usec){
 	(void)ctx;
-	HAL_Delay(usec);
+	osDelay(usec);
 }
 

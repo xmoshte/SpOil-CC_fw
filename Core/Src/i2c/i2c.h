@@ -16,6 +16,7 @@
 #include "log.h"
 #include "ap33772s.h"
 #include "bq25798.h"
+#include "cmsis_os.h"
 
 #include <stdint.h>
 #include <stddef.h>

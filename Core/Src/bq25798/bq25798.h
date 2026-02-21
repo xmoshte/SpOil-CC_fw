@@ -167,6 +167,7 @@ struct bq_bus_delegate {
 
 int bqWriteReg(bq_ref dev, byte reg, byte *data, size_t len);
 int bqReadReg(bq_ref dev, byte reg, byte *data, size_t len);
+void bq_delay(bq_ref dev, qbyte usec);
 
 void bqSetReg(bq_ref dev, byte reg, byte bit, byte mask, byte val);
 bq_ref bq_init(const struct bq_bus_delegate *delegate);

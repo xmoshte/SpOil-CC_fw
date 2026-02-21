@@ -80,6 +80,10 @@ int bqReadReg(bq_ref dev, byte reg, byte *data, size_t len){
 	return dev->bqbus.read(dev->bqbus.ctx, reg, data, len);
 };
 
+void bq_delay(bq_ref dev, qbyte usec){
+    dev->bqbus.delay_us(dev->bqbus.ctx, usec);
+}
+
 /**
  * @brief: This function atomically modifies specific bits in a register without affecting the other bits
  * @param: reg - The 8-bit register address to modify
@@ -114,7 +118,7 @@ bq_ref bq_init(const struct bq_bus_delegate *delegate)
 
     dev->bqbus = *delegate;
 
-    logString("BQ25798: I2C bus initialised\r\n");
+    logString("BQ25798: I2C2 bus initialised\r\n");
 
     return dev;
 }

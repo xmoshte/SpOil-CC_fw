@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -49,17 +50,18 @@
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c2;
-
 TIM_HandleTypeDef htim3;
-
 UART_HandleTypeDef huart2;
+osThreadId tb6612fngTaskHandle;
+osThreadId vnh5180aTaskHandle;
+osThreadId ap33772sTaskHandle;
+osThreadId bq25798TaskHandle;
 
 /* USER CODE BEGIN PV */
 struct bq25790PartInfo p;
 struct bq25790StatusFault r;
 int vbusVoltagemV;
 int vbusCurrentmA;
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -69,6 +71,14 @@ static void MX_TIM3_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_I2C2_Init(void);
+
+void tb6612fngTask(void const * argument);
+void vnh5180aTask(void const * argument);
+
+void ap33772sTask(void const * argument);
+void bq25798Task(void const * argument);
+
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -112,17 +122,43 @@ int main(void)
   MX_I2C1_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
-  ap_ref apdev = ap_init(&apbus);
-  bq_ref bqdev = bq_init(&bqbus);
 
-  ap_set_output(apdev, 1);
-
-  tbPmwStart();
-  vnPmwStart();
-
-  tbMotorDriveRevolutions(30, 1, 8);
-  vnMotorDriveDuration(5000, 1, 10);
   /* USER CODE END 2 */
+
+  /* USER CODE BEGIN RTOS_MUTEX */
+  /* add mutexes, ... */
+  /* USER CODE END RTOS_MUTEX */
+
+  /* USER CODE BEGIN RTOS_SEMAPHORES */
+  /* add semaphores, ... */
+  /* USER CODE END RTOS_SEMAPHORES */
+
+  /* USER CODE BEGIN RTOS_TIMERS */
+  /* start timers, add new ones, ... */
+  /* USER CODE END RTOS_TIMERS */
+
+  /* USER CODE BEGIN RTOS_QUEUES */
+  /* add queues, ... */
+  /* USER CODE END RTOS_QUEUES */
+
+  /* USER CODE BEGIN RTOS_THREADS */
+  osThreadDef(tbTask, tb6612fngTask, osPriorityNormal, 0, 128);
+  tb6612fngTaskHandle = osThreadCreate(osThread(tbTask), NULL);
+
+  osThreadDef(vnTask, vnh5180aTask, osPriorityNormal, 0, 128);
+  vnh5180aTaskHandle = osThreadCreate(osThread(vnTask), NULL);
+
+  osThreadDef(apTask, ap33772sTask, osPriorityNormal, 2, 256);
+  ap33772sTaskHandle = osThreadCreate(osThread(apTask), NULL);
+
+  osThreadDef(bqTask, bq25798Task, osPriorityNormal, 1, 256);
+  ap33772sTaskHandle = osThreadCreate(osThread(bqTask), NULL);
+  /* USER CODE END RTOS_THREADS */
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -131,18 +167,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  ap_get_power_capabilities(apdev);
-	  ap_delay(apdev, 2000);
-	  ap_print_profiles(apdev);
-      ap_request_pps(apdev, 5, 10500, 3100);
-	  ap_read_voltage(apdev, &vbusVoltagemV);
-	  ap_log_voltage(apdev, vbusVoltagemV);
-	  ap_read_current(apdev, &vbusCurrentmA);
-	  ap_log_current(apdev, vbusCurrentmA);
-
-	  bqRprtPartInfo(bqdev, &p);
-	  bqReadStatusFault(bqdev, &r);
-	  bqLogStatusFault(bqdev, &r);
   }
   /* USER CODE END 3 */
 }
@@ -407,6 +431,102 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
+
+/* USER CODE BEGIN Header_StartDefaultTask */
+/**
+  * @brief  Function implementing the defaultTask thread.
+  * @param  argument: Not used
+  * @retval None
+  */
+/* USER CODE END Header_StartDefaultTask */
+void tb6612fngTask(void const * argument)
+{
+  /* USER CODE BEGIN */
+	 tbPmwStart();
+	 tbMotorDriveRevolutions(30, 1, 8);
+  /* Infinite loop */
+  for(;;)
+  {
+//	 osDelay(300);
+  }
+  /* USER CODE END */
+}
+
+void vnh5180aTask(void const * argument)
+{
+  /* USER CODE BEGIN */
+	 vnPmwStart();
+	 vnMotorDriveDuration(5000, 1, 10);
+   /* Infinite loop */
+   for(;;)
+   {
+//     osDelay(300);
+   }
+  /* USER CODE END */
+}
+
+void ap33772sTask(void const * argument)
+{
+   /* USER CODE BEGIN */
+	 ap_ref apdev = ap_init(&apbus);
+	 ap_set_output(apdev, 1);
+
+   /* Infinite loop */
+   for(;;)
+   {
+	 ap_get_power_capabilities(apdev);
+	 ap_print_profiles(apdev);
+
+	 ap_request_pps(apdev, 5, 10500, 3100);
+
+	 ap_read_voltage(apdev, &vbusVoltagemV);
+	 ap_log_voltage(apdev, vbusVoltagemV);
+	 ap_read_current(apdev, &vbusCurrentmA);
+	 ap_log_current(apdev, vbusCurrentmA);
+
+	 ap_delay(apdev, 300);
+    }
+    /* USER CODE END */
+}
+
+void bq25798Task(void const * argument)
+{
+  /* USER CODE BEGIN */
+	 bq_ref bqdev = bq_init(&bqbus);
+
+  /* Infinite loop */
+  for(;;)
+  {
+	  bqRprtPartInfo(bqdev, &p);
+	  bqReadStatusFault(bqdev, &r);
+	  bqLogStatusFault(bqdev, &r);
+
+	  bq_delay(bqdev, 300);
+  }
+  /* USER CODE END */
+}
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM2 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM2)
+  {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.

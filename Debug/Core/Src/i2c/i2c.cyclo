@@ -3,6 +3,6 @@
 ../Core/Src/i2c/i2c.c:26:5:i2cApWrite	2
 ../Core/Src/i2c/i2c.c:41:5:i2cApRead	2
 ../Core/Src/i2c/i2c.c:55:6:i2cApDelay	1
-../Core/Src/i2c/i2c.c:61:5:i2cBqWrite	2
-../Core/Src/i2c/i2c.c:76:5:i2cBqRead	2
-../Core/Src/i2c/i2c.c:90:6:i2cBqDelay	1
+../Core/Src/i2c/i2c.c:62:5:i2cBqWrite	2
+../Core/Src/i2c/i2c.c:77:5:i2cBqRead	2
+../Core/Src/i2c/i2c.c:91:6:i2cBqDelay	1
