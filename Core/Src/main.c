@@ -22,6 +22,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "FreeRTOS.h"
+#include "semphr.h"
 #include "tb6612fng.h"
 #include "vnh5180a.h"
 #include "bq25798.h"
@@ -50,16 +52,59 @@
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c2;
+
 TIM_HandleTypeDef htim3;
+
 UART_HandleTypeDef huart2;
-osThreadId tb6612fngTaskHandle;
-osThreadId vnh5180aTaskHandle;
-osThreadId ap33772sTaskHandle;
-osThreadId bq25798TaskHandle;
+
+/* Definitions for tbTask */
+osThreadId_t tbTaskHandle;
+const osThreadAttr_t tbTask_attributes = {
+  .name = "tbTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityHigh,
+};
+
+/* Definitions for apTask */
+osThreadId_t apTaskHandle;
+const osThreadAttr_t apTask_attributes = {
+  .name = "apTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityAboveNormal,
+};
+
+/* Definitions for bqTask */
+osThreadId_t bqTaskHandle;
+const osThreadAttr_t bqTask_attributes = {
+  .name = "bqTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+
+/* Definitions for vnTask */
+osThreadId_t vnTaskHandle;
+const osThreadAttr_t vnTask_attributes = {
+  .name = "vnTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityHigh,
+};
+
+/* Definitions for vnTaskSem */
+osSemaphoreId_t vnTaskSemHandle;
+const osSemaphoreAttr_t vnTaskSem_attributes = {
+  .name = "vnTaskSem"
+};
+
+/* Definitions for tbTaskSem */
+osSemaphoreId_t tbTaskSemHandle;
+const osSemaphoreAttr_t tbTaskSem_attributes = {
+  .name = "tbTaskSem"
+};
 
 /* USER CODE BEGIN PV */
 struct bq25790PartInfo p;
 struct bq25790StatusFault r;
+
 int vbusVoltagemV;
 int vbusCurrentmA;
 /* USER CODE END PV */
@@ -71,13 +116,10 @@ static void MX_TIM3_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_I2C2_Init(void);
-
-void tb6612fngTask(void const * argument);
-void vnh5180aTask(void const * argument);
-
-void ap33772sTask(void const * argument);
-void bq25798Task(void const * argument);
-
+void tb6612fngTask(void *argument);
+void ap33772sTask(void *argument);
+void bq25798Task(void *argument);
+void vnh5180aTask(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -125,12 +167,22 @@ int main(void)
 
   /* USER CODE END 2 */
 
+  /* Init scheduler */
+  osKernelInitialize();
+
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
 
+  /* Create the semaphores(s) */
+  /* creation of vnTaskSem */
+  vnTaskSemHandle = osSemaphoreNew(1, 0, &vnTaskSem_attributes);
+
+  /* creation of tbTaskSem */
+  tbTaskSemHandle = osSemaphoreNew(1, 0, &tbTaskSem_attributes);
+
   /* USER CODE BEGIN RTOS_SEMAPHORES */
-  /* add semaphores, ... */
+
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* USER CODE BEGIN RTOS_TIMERS */
@@ -141,19 +193,26 @@ int main(void)
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
 
+  /* Create the thread(s) */
+  /* creation of tbTask */
+  tbTaskHandle = osThreadNew(tb6612fngTask, NULL, &tbTask_attributes);
+
+  /* creation of apTask */
+  apTaskHandle = osThreadNew(ap33772sTask, NULL, &apTask_attributes);
+
+  /* creation of bqTask */
+  bqTaskHandle = osThreadNew(bq25798Task, NULL, &bqTask_attributes);
+
+  /* creation of vnTask */
+  vnTaskHandle = osThreadNew(vnh5180aTask, NULL, &vnTask_attributes);
+
   /* USER CODE BEGIN RTOS_THREADS */
-  osThreadDef(tbTask, tb6612fngTask, osPriorityNormal, 0, 128);
-  tb6612fngTaskHandle = osThreadCreate(osThread(tbTask), NULL);
 
-  osThreadDef(vnTask, vnh5180aTask, osPriorityNormal, 0, 128);
-  vnh5180aTaskHandle = osThreadCreate(osThread(vnTask), NULL);
-
-  osThreadDef(apTask, ap33772sTask, osPriorityNormal, 2, 256);
-  ap33772sTaskHandle = osThreadCreate(osThread(apTask), NULL);
-
-  osThreadDef(bqTask, bq25798Task, osPriorityNormal, 1, 256);
-  ap33772sTaskHandle = osThreadCreate(osThread(bqTask), NULL);
   /* USER CODE END RTOS_THREADS */
+
+  /* USER CODE BEGIN RTOS_EVENTS */
+  /* add events, ... */
+  /* USER CODE END RTOS_EVENTS */
 
   /* Start scheduler */
   osKernelStart();
@@ -423,57 +482,58 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(ENDA_VN_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : MTR_EXTI3_PUSHBTN_Pin */
+  GPIO_InitStruct.Pin = MTR_EXTI3_PUSHBTN_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(MTR_EXTI3_PUSHBTN_GPIO_Port, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI3_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI3_IRQn);
+
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
   /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	  BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
+  if(GPIO_Pin == GPIO_PIN_3) {
+	  __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_3);
+
+	  xSemaphoreGiveFromISR(tbTaskSemHandle, &xHigherPriorityTaskWoken);
+	  xSemaphoreGiveFromISR(vnTaskSemHandle, &xHigherPriorityTaskWoken);
+
+	  portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+  } else {
+      __NOP();
+  }
+}
 /* USER CODE END 4 */
 
-/* USER CODE BEGIN Header_StartDefaultTask */
-/**
-  * @brief  Function implementing the defaultTask thread.
-  * @param  argument: Not used
-  * @retval None
-  */
-/* USER CODE END Header_StartDefaultTask */
-void tb6612fngTask(void const * argument)
+void tb6612fngTask(void *argument)
 {
-  /* USER CODE BEGIN */
 	 tbPmwStart();
-	 tbMotorDriveRevolutions(30, 1, 8);
-  /* Infinite loop */
+
   for(;;)
   {
-//	 osDelay(300);
+	 osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
+	 tbMotorDriveRevolutions(30, 1, 1);
+     osDelay(1);
   }
-  /* USER CODE END */
 }
 
-void vnh5180aTask(void const * argument)
+void ap33772sTask(void *argument)
 {
-  /* USER CODE BEGIN */
-	 vnPmwStart();
-	 vnMotorDriveDuration(5000, 1, 10);
-   /* Infinite loop */
-   for(;;)
-   {
-//     osDelay(300);
-   }
-  /* USER CODE END */
-}
-
-void ap33772sTask(void const * argument)
-{
-   /* USER CODE BEGIN */
 	 ap_ref apdev = ap_init(&apbus);
 	 ap_set_output(apdev, 1);
 
-   /* Infinite loop */
-   for(;;)
-   {
+  for(;;)
+  {
 	 ap_get_power_capabilities(apdev);
 	 ap_print_profiles(apdev);
 
@@ -485,25 +545,33 @@ void ap33772sTask(void const * argument)
 	 ap_log_current(apdev, vbusCurrentmA);
 
 	 ap_delay(apdev, 300);
-    }
-    /* USER CODE END */
+  }
 }
 
-void bq25798Task(void const * argument)
+void bq25798Task(void *argument)
 {
-  /* USER CODE BEGIN */
-	 bq_ref bqdev = bq_init(&bqbus);
+	bq_ref bqdev = bq_init(&bqbus);
 
-  /* Infinite loop */
   for(;;)
   {
 	  bqRprtPartInfo(bqdev, &p);
 	  bqReadStatusFault(bqdev, &r);
 	  bqLogStatusFault(bqdev, &r);
 
-	  bq_delay(bqdev, 300);
+	  bq_delay(bqdev, 100);
   }
-  /* USER CODE END */
+}
+
+void vnh5180aTask(void *argument)
+{
+	  vnPmwStart();
+
+  for(;;)
+  {
+	  osSemaphoreAcquire(vnTaskSemHandle, osWaitForever);
+	  vnMotorDriveDuration(5000, 1, 60);
+      osDelay(1);
+  }
 }
 
 /**

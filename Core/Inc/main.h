@@ -91,8 +91,9 @@ void Error_Handler(void);
 #define SWDIO_GPIO_Port GPIOA
 #define SWCLK_Pin GPIO_PIN_14
 #define SWCLK_GPIO_Port GPIOA
-#define MTR_PUSHBTN_Pin GPIO_PIN_3
-#define MTR_PUSHBTN_GPIO_Port GPIOB
+#define MTR_EXTI3_PUSHBTN_Pin GPIO_PIN_3
+#define MTR_EXTI3_PUSHBTN_GPIO_Port GPIOB
+#define MTR_EXTI3_PUSHBTN_EXTI_IRQn EXTI3_IRQn
 #define SCL_PD_Pin GPIO_PIN_6
 #define SCL_PD_GPIO_Port GPIOB
 #define SDA_PD_Pin GPIO_PIN_7

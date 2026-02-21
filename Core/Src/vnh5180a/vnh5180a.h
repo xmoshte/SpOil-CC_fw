@@ -14,6 +14,7 @@
 #include "string.h"
 #include "type.h"
 #include "log.h"
+#include "cmsis_os.h"
 #include <stdint.h>
 #include <stddef.h>
 
