@@ -522,7 +522,7 @@ void tb6612fngTask(void *argument)
   for(;;)
   {
 	 osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
-	 tbMotorDriveRevolutions(30, 1, 1);
+	 tbMotorDriveRevolutions(50, 1, 1);
      osDelay(1);
   }
 }
@@ -544,7 +544,7 @@ void ap33772sTask(void *argument)
 	 ap_read_current(apdev, &vbusCurrentmA);
 	 ap_log_current(apdev, vbusCurrentmA);
 
-	 ap_delay(apdev, 300);
+	 ap_delay(apdev, 2500);
   }
 }
 
@@ -558,7 +558,7 @@ void bq25798Task(void *argument)
 	  bqReadStatusFault(bqdev, &r);
 	  bqLogStatusFault(bqdev, &r);
 
-	  bq_delay(bqdev, 100);
+	  bq_delay(bqdev, 1250);
   }
 }
 
@@ -569,7 +569,7 @@ void vnh5180aTask(void *argument)
   for(;;)
   {
 	  osSemaphoreAcquire(vnTaskSemHandle, osWaitForever);
-	  vnMotorDriveDuration(5000, 1, 60);
+	  vnMotorDriveDuration(8000, 1, 20);
       osDelay(1);
   }
 }
