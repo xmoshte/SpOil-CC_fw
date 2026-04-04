@@ -39,21 +39,21 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/tb6612fng/tb6612fng.h \
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/tb6612fng/tb6612fng.h \
  ../Core/Inc/type.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/log/log.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/vnh5180a/vnh5180a.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/bq25798/bq25798.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/i2c/i2c.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/ap33772s/ap33772s.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/bq25798/bq25798_int.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/bq25798/bq25798.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/bq25798/bqApp.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/bq25798/bq25798_int.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/ap33772s/ap33772s_int.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/ap33772s/ap33772s.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/ap33772s/apApp.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/ap33772s/ap33772s_int.h
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/log/log.h \
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/vnh5180a/vnh5180a.h \
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/bq25798/bq25798.h \
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/i2c/i2c.h \
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/ap33772s/ap33772s.h \
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/bq25798/bq25798_int.h \
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/bq25798/bq25798.h \
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/bq25798/bqApp.h \
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/bq25798/bq25798_int.h \
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/ap33772s/ap33772s_int.h \
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/ap33772s/ap33772s.h \
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/ap33772s/apApp.h \
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/ap33772s/ap33772s_int.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
@@ -95,18 +95,18 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/tb6612fng/tb6612fng.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/tb6612fng/tb6612fng.h:
 ../Core/Inc/type.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/log/log.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/vnh5180a/vnh5180a.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/bq25798/bq25798.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/i2c/i2c.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/ap33772s/ap33772s.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/bq25798/bq25798_int.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/bq25798/bq25798.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/bq25798/bqApp.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/bq25798/bq25798_int.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/ap33772s/ap33772s_int.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/ap33772s/ap33772s.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/ap33772s/apApp.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/ap33772s/ap33772s_int.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/log/log.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/vnh5180a/vnh5180a.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/bq25798/bq25798.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/i2c/i2c.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/ap33772s/ap33772s.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/bq25798/bq25798_int.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/bq25798/bq25798.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/bq25798/bqApp.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/bq25798/bq25798_int.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/ap33772s/ap33772s_int.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/ap33772s/ap33772s.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/ap33772s/apApp.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/ap33772s/ap33772s_int.h:

@@ -160,7 +160,7 @@ void bqReadStatus1_3(bq_ref dev, struct bq25790Status1_3 *p){
 	p->ac1_present_stat = (val0 >> 1) & 1U;
 	p->ac2_present_stat = (val0 >> 2) & 1U;
 	p->pg_stat = (val0 >> 3) & 1U;
-	p->poorsrc_stat = (val0 >> 4) & 1U;
+//	p->poorsrc_stat = (val0 >> 4) & 1U;
 	p->wd_stat = (val0 >> 5) & 1U;
 	p->vindpm_stat = (val0 >> 6) & 1U;
 	p->iindpm_stat = (val0 >> 7) & 1U;
@@ -183,6 +183,27 @@ void bqReadStatus1_3(bq_ref dev, struct bq25790Status1_3 *p){
 	p->acrb2_stat = (val3 >> 7) & 1U;
 }
 
+void bqLogChargerStatusFault(bq_ref dev, struct bq25790Status1_3 *f){
+    if (!f) return;
+
+    logString("\r\n--- BQ25798 Charger Status ---\r\n");
+
+    if (f->vbus_present_stat)   logString("VBUS present\r\n");
+    if (f->ac1_present_stat)    logString("VAC1 present\r\n");
+    if (f->ac2_present_stat)    logString("VAC2 present\r\n");
+    if (f->pg_stat)             logString("Power good\r\n");
+    if (f->wd_stat)             logString("WD timer expired\r\n");
+    if (f->vindpm_stat)         logString("In VINDPM regulation or VOTG regulation\r\n");
+    if (f->iindpm_stat)         logString("In IINDPM regulation or IOTG regulation\r\n");
+
+    if (f->vbat_present_stat)   logString("VBAT present\r\n");
+    if (f->dpdm_stat)           logString("The D+/D- detection is ongoing\r\n");
+    if (f->treg_stat)           logString("Device in thermal regulation\r\n");
+    if (!f->ico_stat)           logString("ICO disabled\r\n");
+
+    logString("-----------------------------\r\n");
+}
+
 void bqReadTempStatus(bq_ref dev, struct bq25790Status4 *q){
 	byte val4;
 
@@ -197,6 +218,26 @@ void bqReadTempStatus(bq_ref dev, struct bq25790Status4 *q){
 	q->ts_cool_stat = (val4 >> 2) & 1U;
 	q->ts_cold_stat = (val4 >> 3) & 1U;
 	q->vbatotg_low_stat = (val4 >> 4) & 1U;
+}
+
+void bqRprtStsTempRng(bq_ref dev, struct bq25790Status4 *p){
+	bqReadTempStatus(dev, p);
+
+	if(p->ts_hot_stat){
+		logString("TS status in hot range/r/n");
+	}
+
+	if(p->ts_warm_stat){
+		logString("TS status in warm range/r/n");
+	}
+
+	if(p->ts_cool_stat){
+        logString("TS status in cool range/r/n");
+	}
+
+	if(p->ts_cold_stat){
+	    logString("TS status in cold range/r/n");
+	}
 }
 
 void bqReadStatusFault(bq_ref dev, struct bq25790StatusFault *r){
@@ -271,32 +312,16 @@ void bqRprtStsSftyTmrExp(bq_ref dev, struct bq25790Status1_3 *p){
 	}
 }
 
-void bqRprtStsTempRng(bq_ref dev, struct bq25790Status4 *p){
-	bqReadTempStatus(dev, p);
-
-	if(p->ts_hot_stat){
-		logString("TS status in hot range/r/n");
-	}
-
-	if(p->ts_warm_stat){
-		logString("TS status in warm range/r/n");
-	}
-
-	if(p->ts_cool_stat){
-        logString("TS status in cool range/r/n");
-	}
-
-	if(p->ts_cold_stat){
-	    logString("TS status in cold range/r/n");
-	}
-}
 
 void bqSetWatchdogTimer(bq_ref dev, enum bq25790Watchdog opt){
 	bqSetReg(dev, REG10_Charger_Control_1, 0, 0x07, opt);
 }
 
-void bqSetMinimalSystemVoltageLimit(bq_ref dev, qbyte volts){
-	qbyte mVolts = volts * 1000;
+void bqSetTsIgnore(bq_ref dev, byte opt){
+	bqSetReg(dev, REG18_NTC_Control_1, 0, 0x01, opt);
+}
+
+void bqSetMinimalSystemVoltageLimit(bq_ref dev, qbyte mVolts){
 	qbyte regVal = (mVolts/250);
 
 	if(regVal > 64){
@@ -306,8 +331,7 @@ void bqSetMinimalSystemVoltageLimit(bq_ref dev, qbyte volts){
 	bqSetReg(dev, REG00_Minimal_System_Voltage, 0, 0x1F, (byte)regVal);
 }
 
-void bqSetChargeVoltageLimit(bq_ref dev, qbyte volts){
-	qbyte mVolts = volts * 1000;
+void bqSetChargeVoltageLimit(bq_ref dev, qbyte mVolts){
 	qbyte regVal = (mVolts/10);
 
 	if(regVal > 1800){
@@ -410,6 +434,7 @@ int16_t bqReadIBus(bq_ref dev){
 	   sprintf(bufStrng, "%hd", mAmps);
 	   logString("IBUS:");
 	   logString(bufStrng);
+	   nextLine();
 	   return mAmps;
 	}
 	return mAmps;
@@ -427,6 +452,7 @@ int16_t bqReadVBus(bq_ref dev){
 	   sprintf(bufStrng, "%hd", mVolts);
 	   logString("VBUS:");
 	   logString(bufStrng);
+	   nextLine();
 	   return mVolts;
 	}
 	return mVolts;
@@ -444,6 +470,7 @@ int16_t bqReadIBat(bq_ref dev){
 	   sprintf(bufStrng, "%hd", mAmps);
 	   logString("IBAT:");
 	   logString(bufStrng);
+	   nextLine();
 	   return mAmps;
 	}
 	return mAmps;
@@ -461,6 +488,7 @@ int16_t bqReadVBat(bq_ref dev){
 	   sprintf(bufStrng, "%hd" , mVolts);
 	   logString("VBAT:");
 	   logString(bufStrng);
+	   nextLine();
 	   return mVolts;
 	}
 	return mVolts;
@@ -478,6 +506,7 @@ int16_t bqReadVSys(bq_ref dev){
 	   sprintf(bufStrng, "%hd" , mVolts);
 	   logString("VSYS:");
 	   logString(bufStrng);
+	   nextLine();
 	   return mVolts;
 	}
 	return mVolts;

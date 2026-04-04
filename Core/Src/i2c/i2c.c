@@ -32,7 +32,7 @@ int i2cApWrite(void *ctx, byte cmd, byte* data, size_t len){
   }
   else{
 #ifdef LOG_EN
-      logString("AP: WRITE FAILURE\r\n");
+      logString("AP:WRITE FAILURE\r\n");
 #endif
 	  return HAL_ERROR;
   }

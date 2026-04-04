@@ -177,8 +177,10 @@ void bqReset(bq_ref dev);
 
 void bqEnOrMaskInterrupt(bq_ref dev, qbyte targIntMsk, qbyte bqIntMsk, byte intrMskReg, byte startBit, byte enOrDis);
 void bqSetWatchdogTimer(bq_ref dev, enum bq25790Watchdog opt);
+void bqSetTsIgnore(bq_ref dev, byte opt);
 
 void bqReadStatus1_3(bq_ref dev, struct bq25790Status1_3 *p);
+void bqLogChargerStatusFault(bq_ref dev, struct bq25790Status1_3 *f);
 void bqReadTempStatus(bq_ref dev, struct bq25790Status4 *q);
 void bqReadStatusFault(bq_ref dev, struct bq25790StatusFault *r);
 void bqLogStatusFault(bq_ref dev, struct bq25790StatusFault *f);

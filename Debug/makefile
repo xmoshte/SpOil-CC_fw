@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (13.3.rel1)
+# Toolchain: GNU Tools for STM32 (14.3.rel1)
 ################################################################################
 
 -include ../makefile.init
@@ -44,34 +44,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := SpOil-CC_v2
+BUILD_ARTIFACT_NAME := SpOil-CC_fw
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-SpOil-CC_v2.elf \
+SpOil-CC_fw.elf \
 
 MAP_FILES += \
-SpOil-CC_v2.map \
+SpOil-CC_fw.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-SpOil-CC_v2.list \
+SpOil-CC_fw.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: SpOil-CC_v2.elf secondary-outputs
+main-build: SpOil-CC_fw.elf secondary-outputs
 
 # Tool invocations
-SpOil-CC_v2.elf SpOil-CC_v2.map: $(OBJS) $(USER_OBJS) C:\Users\Dell\STM32CubeIDE\workspace_1.19.0\SpOil-CC_v2\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "SpOil-CC_v2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\Dell\STM32CubeIDE\workspace_1.19.0\SpOil-CC_v2\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SpOil-CC_v2.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+SpOil-CC_fw.elf SpOil-CC_fw.map: $(OBJS) $(USER_OBJS) C:\Users\Dell\Desktop\xmoshte\projects\cubeideprjcts\SpOil-CC_fw\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "SpOil-CC_fw.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\Dell\Desktop\xmoshte\projects\cubeideprjcts\SpOil-CC_fw\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SpOil-CC_fw.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -80,14 +80,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-SpOil-CC_v2.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "SpOil-CC_v2.list"
+SpOil-CC_fw.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "SpOil-CC_fw.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) SpOil-CC_v2.elf SpOil-CC_v2.list SpOil-CC_v2.map default.size.stdout
+	-$(RM) SpOil-CC_fw.elf SpOil-CC_fw.list SpOil-CC_fw.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

@@ -102,5 +102,10 @@ int i2cBqWrite(void *ctx, byte reg, byte* data, size_t len);
 int i2cBqRead(void *ctx, byte reg, byte* data, size_t len);
 
 
+/**
+ * @brief: A delay function for the BQ25798
+ * @param: Device context
+ * @param: Delay time in microseconds
+ */
 void i2cBqDelay(void *ctx, qbyte usec);
 #endif /* I2C_H */

@@ -1,7 +1,7 @@
 Core/Src/ap33772s/ap33772s.o: ../Core/Src/ap33772s/ap33772s.c \
  ../Core/Src/ap33772s/ap33772s.h ../Core/Inc/type.h \
  ../Core/Src/ap33772s/ap33772s_int.h \
- C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/log/log.h \
+ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/log/log.h \
  ../Core/Inc/main.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -31,7 +31,7 @@ Core/Src/ap33772s/ap33772s.o: ../Core/Src/ap33772s/ap33772s.c \
 ../Core/Src/ap33772s/ap33772s.h:
 ../Core/Inc/type.h:
 ../Core/Src/ap33772s/ap33772s_int.h:
-C:/Users/Dell/STM32CubeIDE/workspace_1.19.0/SpOil-CC_v2/Core/Src/log/log.h:
+C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/log/log.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:

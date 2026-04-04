@@ -64,7 +64,6 @@ const osThreadAttr_t tbTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityHigh,
 };
-
 /* Definitions for apTask */
 osThreadId_t apTaskHandle;
 const osThreadAttr_t apTask_attributes = {
@@ -72,7 +71,6 @@ const osThreadAttr_t apTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityAboveNormal,
 };
-
 /* Definitions for bqTask */
 osThreadId_t bqTaskHandle;
 const osThreadAttr_t bqTask_attributes = {
@@ -80,7 +78,6 @@ const osThreadAttr_t bqTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
-
 /* Definitions for vnTask */
 osThreadId_t vnTaskHandle;
 const osThreadAttr_t vnTask_attributes = {
@@ -88,22 +85,21 @@ const osThreadAttr_t vnTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityHigh,
 };
-
 /* Definitions for vnTaskSem */
 osSemaphoreId_t vnTaskSemHandle;
 const osSemaphoreAttr_t vnTaskSem_attributes = {
   .name = "vnTaskSem"
 };
-
 /* Definitions for tbTaskSem */
 osSemaphoreId_t tbTaskSemHandle;
 const osSemaphoreAttr_t tbTaskSem_attributes = {
   .name = "tbTaskSem"
 };
-
 /* USER CODE BEGIN PV */
 struct bq25790PartInfo p;
+struct bq25790Status1_3 q;
 struct bq25790StatusFault r;
+byte ap_status;
 
 int vbusVoltagemV;
 int vbusCurrentmA;
@@ -515,63 +511,121 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 }
 /* USER CODE END 4 */
 
+/* USER CODE BEGIN Header_tb6612fngTask */
+/**
+  * @brief  Function implementing the tbTask thread.
+  * @param  argument: Not used
+  * @retval None
+  */
+/* USER CODE END Header_tb6612fngTask */
 void tb6612fngTask(void *argument)
 {
-	 tbPmwStart();
-
+  /* USER CODE BEGIN 5 */
+	tbPmwStart();
+  /* Infinite loop */
   for(;;)
   {
-	 osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
-	 tbMotorDriveRevolutions(50, 1, 1);
-     osDelay(1);
+	osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
+	tbMotorDriveRevolutions(20, 1, 1);
+    osDelay(1);
   }
+  /* USER CODE END 5 */
 }
 
+/* USER CODE BEGIN Header_ap33772sTask */
+/**
+* @brief Function implementing the apTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_ap33772sTask */
 void ap33772sTask(void *argument)
 {
-	 ap_ref apdev = ap_init(&apbus);
-	 ap_set_output(apdev, 1);
-
+  /* USER CODE BEGIN ap33772sTask */
+  ap_ref apdev = ap_init(&apbus);
+  	 ap_set_output(apdev, 1);
+  /* Infinite loop */
   for(;;)
   {
 	 ap_get_power_capabilities(apdev);
 	 ap_print_profiles(apdev);
 
+     ap_read_status(apdev, &ap_status);
+
 	 ap_request_pps(apdev, 5, 10500, 3100);
 
 	 ap_read_voltage(apdev, &vbusVoltagemV);
 	 ap_log_voltage(apdev, vbusVoltagemV);
+
 	 ap_read_current(apdev, &vbusCurrentmA);
 	 ap_log_current(apdev, vbusCurrentmA);
 
 	 ap_delay(apdev, 2500);
   }
+  /* USER CODE END ap33772sTask */
 }
 
+/* USER CODE BEGIN Header_bq25798Task */
+/**
+* @brief Function implementing the bqTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_bq25798Task */
 void bq25798Task(void *argument)
 {
-	bq_ref bqdev = bq_init(&bqbus);
+  /* USER CODE BEGIN bq25798Task */
+  bq_ref bqdev = bq_init(&bqbus);
+      bqSetWatchdogTimer(bqdev, WDT_DISABLE);
+//	  bqSetReg(bqdev, 0x0A, 6, 0xC0, 0x02);
 
+	  bqSetMinimalSystemVoltageLimit(bqdev, 9200);
+	  bqSetChargeVoltageLimit(bqdev, 12600);
+	  bqSetChargeCurrentLimit(bqdev, 1);
+  /* Infinite loop */
   for(;;)
   {
-	  bqRprtPartInfo(bqdev, &p);
+//      bqSetReg(bqdev, 0x10, 3, 0x08, 1);
+	  bqSetTsIgnore(bqdev, 1);
+
+	  bqReadStatus1_3(bqdev, &q);
+	  bqLogChargerStatusFault(bqdev, &q);
+
 	  bqReadStatusFault(bqdev, &r);
 	  bqLogStatusFault(bqdev, &r);
 
+	  bqReadVBus(bqdev);
+	  bqReadIBus(bqdev);
+
+	  bqReadVSys(bqdev);
+
+	  bqReadVBat(bqdev);
+	  bqReadIBat(bqdev);
+
 	  bq_delay(bqdev, 1250);
   }
+  /* USER CODE END bq25798Task */
 }
 
+/* USER CODE BEGIN Header_vnh5180aTask */
+/**
+* @brief Function implementing the vnTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_vnh5180aTask */
 void vnh5180aTask(void *argument)
 {
-	  vnPmwStart();
-
+  /* USER CODE BEGIN vnh5180aTask */
+	vnPmwStart();
+  /* Infinite loop */
   for(;;)
   {
 	  osSemaphoreAcquire(vnTaskSemHandle, osWaitForever);
-	  vnMotorDriveDuration(8000, 1, 20);
+	  vnMotorDriveDuration(600, 1, 20);
       osDelay(1);
   }
+  /* USER CODE END vnh5180aTask */
 }
 
 /**
