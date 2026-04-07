@@ -5516,10 +5516,10 @@ void tb6612fngTask(void *argument)
  8002a4c:	f04f 31ff 	mov.w	r1, #4294967295
  8002a50:	4618      	mov	r0, r3
  8002a52:	f004 fa7b 	bl	8006f4c <osSemaphoreAcquire>
-	tbMotorDriveRevolutions(20, 1, 1);
+	tbMotorDriveRevolutions(25, 1, 1);
  8002a56:	2201      	movs	r2, #1
  8002a58:	2101      	movs	r1, #1
- 8002a5a:	2014      	movs	r0, #20
+ 8002a5a:	2019      	movs	r0, #25
  8002a5c:	f000 fdd9 	bl	8003612 <tbMotorDriveRevolutions>
     osDelay(1);
  8002a60:	2001      	movs	r0, #1
