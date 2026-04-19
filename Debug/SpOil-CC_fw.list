@@ -5519,18 +5519,18 @@ void tb6612fngTask(void *argument)
     osDelay(2000);
  8002a56:	f44f 60fa 	mov.w	r0, #2000	@ 0x7d0
  8002a5a:	f004 f9df 	bl	8006e1c <osDelay>
-	tbMotorDriveRevolutions(20, 1, 1);
+	tbMotorDriveRevolutions(150, 1, 1);
  8002a5e:	2201      	movs	r2, #1
  8002a60:	2101      	movs	r1, #1
- 8002a62:	2014      	movs	r0, #20
+ 8002a62:	2096      	movs	r0, #150	@ 0x96
  8002a64:	f000 fde1 	bl	800362a <tbMotorDriveRevolutions>
 	osDelay(10000);
  8002a68:	f242 7010 	movw	r0, #10000	@ 0x2710
  8002a6c:	f004 f9d6 	bl	8006e1c <osDelay>
-	tbMotorDriveRevolutions(20, 0, 1);
+	tbMotorDriveRevolutions(150, 0, 1);
  8002a70:	2201      	movs	r2, #1
  8002a72:	2100      	movs	r1, #0
- 8002a74:	2014      	movs	r0, #20
+ 8002a74:	2096      	movs	r0, #150	@ 0x96
  8002a76:	f000 fdd8 	bl	800362a <tbMotorDriveRevolutions>
 	osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
  8002a7a:	bf00      	nop
