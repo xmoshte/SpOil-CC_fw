@@ -6271,8 +6271,9 @@ LOAD C:/ST/STM32CubeIDE_2.1.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
                 0x08003920       0x2e ./Core/Src/vnh5180a/vnh5180a.o
                 0x08003920                vnMotorDrive
  .text.vnMotorDriveDuration
-                0x0800394e       0x3e ./Core/Src/vnh5180a/vnh5180a.o
+                0x0800394e       0x3c ./Core/Src/vnh5180a/vnh5180a.o
                 0x0800394e                vnMotorDriveDuration
+ *fill*         0x0800398a        0x2 
  .text.Reset_Handler
                 0x0800398c       0x48 ./Core/Startup/startup_stm32f103c8tx.o
                 0x0800398c                Reset_Handler

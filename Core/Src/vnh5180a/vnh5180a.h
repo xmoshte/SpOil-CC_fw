@@ -20,7 +20,7 @@
 
 #define VOLTSPERRPMVN 0.00106 /* 12/11300 */
 #define MAXVOLTAGE 12
-#define VNMAXRPM 11300
+#define VNMAXRPM 20000
 
 extern TIM_HandleTypeDef htim3;
 

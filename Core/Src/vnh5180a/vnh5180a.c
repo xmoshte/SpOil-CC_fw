@@ -166,7 +166,7 @@ void vnMotorDrive(qbyte rpm, byte dir){
 void vnMotorDriveDuration(qbyte rpm, byte dir, dbyte sdur){
 	dbyte msec = sdur * 1000;
 
-	vnMotorDrive(5000, 1);
+	vnMotorDrive(rpm, 1);
 	osDelay(msec);
 	vnMotorBrakeToGnd();
 };
