@@ -64,6 +64,7 @@ const osThreadAttr_t tbTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityHigh,
 };
+
 /* Definitions for apTask */
 osThreadId_t apTaskHandle;
 const osThreadAttr_t apTask_attributes = {
@@ -71,6 +72,7 @@ const osThreadAttr_t apTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityAboveNormal,
 };
+
 /* Definitions for bqTask */
 osThreadId_t bqTaskHandle;
 const osThreadAttr_t bqTask_attributes = {
@@ -78,6 +80,7 @@ const osThreadAttr_t bqTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+
 /* Definitions for vnTask */
 osThreadId_t vnTaskHandle;
 const osThreadAttr_t vnTask_attributes = {
@@ -85,16 +88,19 @@ const osThreadAttr_t vnTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityHigh,
 };
+
 /* Definitions for vnTaskSem */
 osSemaphoreId_t vnTaskSemHandle;
 const osSemaphoreAttr_t vnTaskSem_attributes = {
   .name = "vnTaskSem"
 };
+
 /* Definitions for tbTaskSem */
 osSemaphoreId_t tbTaskSemHandle;
 const osSemaphoreAttr_t tbTaskSem_attributes = {
   .name = "tbTaskSem"
 };
+
 /* USER CODE BEGIN PV */
 struct bq25790PartInfo p;
 struct bq25790Status1_3 q;
