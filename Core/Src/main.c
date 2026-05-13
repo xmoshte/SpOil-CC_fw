@@ -533,9 +533,9 @@ void tb6612fngTask(void *argument)
   {
 	osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
     osDelay(2000);
-	tbMotorDriveRevolutions(200, 1, 1);
+	tbMotorDriveRevolutions(300, 1, 1);
 	osDelay(10000);
-	tbMotorDriveRevolutions(200, 0, 1);
+	tbMotorDriveRevolutions(300, 0, 1);
   }
   /* USER CODE END 5 */
 }
@@ -588,6 +588,7 @@ void bq25798Task(void *argument)
 //	  bqSetReg(bqdev, 0x0A, 6, 0xC0, 0x02);
 
 	  bqSetMinimalSystemVoltageLimit(bqdev, 9200);
+
 	  bqSetChargeVoltageLimit(bqdev, 12600);
 	  bqSetChargeCurrentLimit(bqdev, 1);
   /* Infinite loop */

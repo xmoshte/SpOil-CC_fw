@@ -18,7 +18,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#define VOLTSPERRPMVN 0.00106 /* 12/11300 */
+#define VOLTSPERRPMVN 0.0006 /* 12/20000 */
 #define MAXVOLTAGE 12
 #define VNMAXRPM 20000
 
