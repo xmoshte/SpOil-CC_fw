@@ -10,5 +10,5 @@
 ../Core/Src/main.c:550:6:ap33772sTask	24	static
 ../Core/Src/main.c:583:6:bq25798Task	24	static
 ../Core/Src/main.c:626:6:vnh5180aTask	16	static
-../Core/Src/main.c:649:6:HAL_TIM_PeriodElapsedCallback	16	static
-../Core/Src/main.c:667:6:Error_Handler	4	static,ignoring_inline_asm
+../Core/Src/main.c:647:6:HAL_TIM_PeriodElapsedCallback	16	static
+../Core/Src/main.c:665:6:Error_Handler	4	static,ignoring_inline_asm

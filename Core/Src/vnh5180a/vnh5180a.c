@@ -166,13 +166,14 @@ void vnMotorDrive(qbyte rpm, byte dir){
 void vnMotorDriveDuration(qbyte rpm, byte dir, dbyte sdur){
 	dbyte msec = sdur * 1000;
 
-	vnMotorDrive(rpm, 1);
+	vnMotorDrive(rpm, dir);
 	osDelay(msec);
 	vnMotorBrakeToGnd();
 };
 
 void csEnOrDis(byte enOrDis){
-	if(enOrDis != 0 || enOrDis != 1){
+//	if(enOrDis != 0 || enOrDis != 1){
+	if(enOrDis != 0 && enOrDis != 1){
 		logString("VNH5180A-E: Incorrect CS enable or disable parameter!\r\n");
 		return;
 	}

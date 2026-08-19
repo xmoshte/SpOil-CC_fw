@@ -18,9 +18,9 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#define VOLTSPERRPMVN 0.0006 /* 12/20000 */
+#define VOLTSPERRPMVN 0.00046154 /* 12/26000 */
 #define MAXVOLTAGE 12
-#define VNMAXRPM 20000
+#define VNMAXRPM 26000
 
 extern TIM_HandleTypeDef htim3;
 

@@ -10,5 +10,5 @@
 ../Core/Src/main.c:550:6:ap33772sTask	1
 ../Core/Src/main.c:583:6:bq25798Task	1
 ../Core/Src/main.c:626:6:vnh5180aTask	1
-../Core/Src/main.c:649:6:HAL_TIM_PeriodElapsedCallback	2
-../Core/Src/main.c:667:6:Error_Handler	1
+../Core/Src/main.c:647:6:HAL_TIM_PeriodElapsedCallback	2
+../Core/Src/main.c:665:6:Error_Handler	1
