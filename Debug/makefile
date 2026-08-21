@@ -70,8 +70,8 @@ all: main-build
 main-build: SpOil-CC_fw.elf secondary-outputs
 
 # Tool invocations
-SpOil-CC_fw.elf SpOil-CC_fw.map: $(OBJS) $(USER_OBJS) C:\Users\Dell\Desktop\xmoshte\projects\cubeideprjcts\SpOil-CC_fw\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "SpOil-CC_fw.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\Dell\Desktop\xmoshte\projects\cubeideprjcts\SpOil-CC_fw\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SpOil-CC_fw.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+SpOil-CC_fw.elf SpOil-CC_fw.map: $(OBJS) $(USER_OBJS) C:\Users\User\Desktop\xmoshte\projects\SpOil-CC_fw\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "SpOil-CC_fw.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\User\Desktop\xmoshte\projects\SpOil-CC_fw\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SpOil-CC_fw.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

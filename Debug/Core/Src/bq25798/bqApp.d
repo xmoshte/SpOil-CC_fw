@@ -1,7 +1,7 @@
 Core/Src/bq25798/bqApp.o: ../Core/Src/bq25798/bqApp.c \
  ../Core/Src/bq25798/bqApp.h ../Core/Src/bq25798/bq25798_int.h \
  ../Core/Src/bq25798/bq25798.h \
- C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/i2c/i2c.h \
+ C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/i2c/i2c.h \
  ../Core/Inc/main.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -29,9 +29,9 @@ Core/Src/bq25798/bqApp.o: ../Core/Src/bq25798/bqApp.c \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  ../Core/Inc/type.h \
- C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/log/log.h \
- C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/ap33772s/ap33772s.h \
- C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/bq25798/bq25798.h \
+ C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/log/log.h \
+ C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/ap33772s/ap33772s.h \
+ C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/bq25798/bq25798.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
@@ -46,7 +46,7 @@ Core/Src/bq25798/bqApp.o: ../Core/Src/bq25798/bqApp.c \
 ../Core/Src/bq25798/bqApp.h:
 ../Core/Src/bq25798/bq25798_int.h:
 ../Core/Src/bq25798/bq25798.h:
-C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/i2c/i2c.h:
+C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/i2c/i2c.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
@@ -75,9 +75,9 @@ C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/i2c/i2
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 ../Core/Inc/type.h:
-C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/log/log.h:
-C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/ap33772s/ap33772s.h:
-C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/bq25798/bq25798.h:
+C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/log/log.h:
+C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/ap33772s/ap33772s.h:
+C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/bq25798/bq25798.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:

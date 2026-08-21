@@ -26,10 +26,10 @@ Core/Src/i2c/i2c.o: ../Core/Src/i2c/i2c.c ../Core/Src/i2c/i2c.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  ../Core/Inc/type.h \
- C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/log/log.h \
- C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/ap33772s/ap33772s.h \
- C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/bq25798/bq25798.h \
- C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/i2c/i2c.h \
+ C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/log/log.h \
+ C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/ap33772s/ap33772s.h \
+ C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/bq25798/bq25798.h \
+ C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/i2c/i2c.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
@@ -70,10 +70,10 @@ Core/Src/i2c/i2c.o: ../Core/Src/i2c/i2c.c ../Core/Src/i2c/i2c.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 ../Core/Inc/type.h:
-C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/log/log.h:
-C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/ap33772s/ap33772s.h:
-C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/bq25798/bq25798.h:
-C:/Users/Dell/Desktop/xmoshte/projects/cubeideprjcts/SpOil-CC_fw/Core/Src/i2c/i2c.h:
+C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/log/log.h:
+C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/ap33772s/ap33772s.h:
+C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/bq25798/bq25798.h:
+C:/Users/User/Desktop/xmoshte/projects/SpOil-CC_fw/Core/Src/i2c/i2c.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:

@@ -19,8 +19,8 @@
 #include <stddef.h>
 
 #define MAXVOLTAGE 12
-#define TBMAXRPM 300
-#define VOLTSPERRPMTB 0.04 /* 12/300 */
+#define TBMAXRPM 78
+#define VOLTSPERRPMTB 0.154 /* 12/78 */
 #define NOOFREVOLUTIONS 8
 
 extern TIM_HandleTypeDef htim3;
