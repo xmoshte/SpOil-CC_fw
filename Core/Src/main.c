@@ -167,6 +167,8 @@ int main(void)
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
 
+	tbSetStndbyPin(LOW);
+
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -528,7 +530,6 @@ void tb6612fngTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
 	tbPmwStart();
-	tbSetStndbyPin(LOW);
   /* Infinite loop */
   for(;;)
   {
