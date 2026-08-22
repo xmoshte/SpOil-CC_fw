@@ -533,6 +533,8 @@ void tb6612fngTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+	  tbSetStndbyPin(LOW);
+
 	osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
     osDelay(2000);
 	tbMotorDriveRevolutions(78, 1, 1);
