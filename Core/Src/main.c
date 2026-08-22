@@ -1,4 +1,4 @@
-/* Vince clone spoil USER CODE BEGIN Header */
+/*USER CODE BEGIN Header */
 /**
   ******************************************************************************
   * @file           : main.c
@@ -528,6 +528,7 @@ void tb6612fngTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
 	tbPmwStart();
+	tbSetStndbyPin(LOW);
   /* Infinite loop */
   for(;;)
   {
