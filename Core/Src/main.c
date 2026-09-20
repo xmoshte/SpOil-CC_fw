@@ -537,9 +537,9 @@ void tb6612fngTask(void *argument)
 
 	osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
     osDelay(2000);
-	tbMotorDriveRevolutions(78, 1, 3);
+	tbMotorDriveRevolutions(78, 1, 6);
 	osDelay(15000);
-	tbMotorDriveRevolutions(78, 0, 3);
+	tbMotorDriveRevolutions(78, 0, 6);
   }
   /* USER CODE END 5 */
 }
