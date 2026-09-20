@@ -539,21 +539,33 @@ void tb6612fngTask(void *argument)
 
     osDelay(3000);
 
-	tbMotorDriveRevolutions(40, 1, 0.5);
+	tbMotorDriveRevolutions(30, 1, 0.25);
 	osDelay(1000);
-	tbMotorDriveRevolutions(40, 0, 0.5);
+	tbMotorDriveRevolutions(30, 0, 0.25);
 
-	osDelay(1000);
+//	osDelay(1000);
 
-	tbMotorDriveRevolutions(40, 1, 0.5);
+	tbMotorDriveRevolutions(30, 1, 0.5);
 	osDelay(1000);
-	tbMotorDriveRevolutions(40, 0, 0.5);
+	tbMotorDriveRevolutions(30, 0, 0.5);
 
-	osDelay(1000);
+//	osDelay(1000);
 
-	tbMotorDriveRevolutions(40, 1, 0.5);
+	tbMotorDriveRevolutions(30, 1, 0.75);
 	osDelay(1000);
-	tbMotorDriveRevolutions(40, 0, 0.5);
+	tbMotorDriveRevolutions(30, 0, 0.75);
+
+//	osDelay(1000);
+
+	tbMotorDriveRevolutions(30, 1, 1);
+	osDelay(1000);
+	tbMotorDriveRevolutions(30, 0, 1);
+
+//	osDelay(1000);
+
+	tbMotorDriveRevolutions(30, 1, 1.25);
+	osDelay(1000);
+	tbMotorDriveRevolutions(30, 0, 1.25);
   }
   /* USER CODE END 5 */
 }
