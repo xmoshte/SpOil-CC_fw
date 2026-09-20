@@ -538,7 +538,7 @@ void tb6612fngTask(void *argument)
 	osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
     osDelay(2000);
 	tbMotorDriveRevolutions(78, 1, 3);
-	osDelay(10000);
+	osDelay(15000);
 	tbMotorDriveRevolutions(78, 0, 3);
   }
   /* USER CODE END 5 */
@@ -635,7 +635,7 @@ void vnh5180aTask(void *argument)
   for(;;)
   {
 	  osSemaphoreAcquire(vnTaskSemHandle, osWaitForever);
-	  vnMotorDriveDuration(20000, 1, 15);
+	  vnMotorDriveDuration(20000, 1, 30);
   }
   /* USER CODE END vnh5180aTask */
 }
