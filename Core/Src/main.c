@@ -536,10 +536,18 @@ void tb6612fngTask(void *argument)
 	  tbSetStndbyPin(LOW);
 
 	osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
-    osDelay(2000);
-	tbMotorDriveRevolutions(58, 1, 8);
-	osDelay(15000);
-	tbMotorDriveRevolutions(58, 0, 8);
+    osDelay(3000);
+	tbMotorDriveRevolutions(78, 1, 3);
+	osDelay(1000);
+	tbMotorDriveRevolutions(78, 0, 3);
+	osDelay(1000);
+	tbMotorDriveRevolutions(78, 1, 3);
+	osDelay(1000);
+	tbMotorDriveRevolutions(78, 0, 3);
+	osDelay(1000);
+	tbMotorDriveRevolutions(78, 1, 3);
+	osDelay(1000);
+	tbMotorDriveRevolutions(78, 0, 3);
   }
   /* USER CODE END 5 */
 }
@@ -635,7 +643,7 @@ void vnh5180aTask(void *argument)
   for(;;)
   {
 	  osSemaphoreAcquire(vnTaskSemHandle, osWaitForever);
-	  vnMotorDriveDuration(20000, 1, 30);
+	  vnMotorDriveDuration(20000, 1, 20);
   }
   /* USER CODE END vnh5180aTask */
 }
