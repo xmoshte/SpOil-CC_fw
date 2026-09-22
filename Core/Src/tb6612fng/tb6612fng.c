@@ -113,3 +113,11 @@ void tbMotorDriveRevolutions(dbyte rpm, byte dir, byte rev){
     osDelay(msec);
     tbMotorStop();
 };
+
+void tbMotorDriveDuration(qbyte rpm, byte dir, dbyte sdur){
+	dbyte msec = sdur * 1000;
+
+	tbMotorDrive(rpm, dir);
+	osDelay(msec);
+	tbMotorStop();
+};

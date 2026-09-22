@@ -109,6 +109,7 @@ byte ap_status;
 
 int vbusVoltagemV;
 int vbusCurrentmA;
+int linearmotorsequencecounter = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -539,33 +540,16 @@ void tb6612fngTask(void *argument)
 
     osDelay(3000);
 
-	tbMotorDriveRevolutions(30, 1, 0.25);
-	osDelay(1000);
-	tbMotorDriveRevolutions(30, 0, 0.25);
+    for(int linearmotorsequencecounter = 0; linearmotorsequencecounter < 5; linearmotorsequencecounter++){
 
-//	osDelay(1000);
+//    		tbMotorDriveRevolutions(40, 1, (0.25 + linearmotorsequencecounter * 0.25 ) );
+//    		osDelay(1000);
+//    		tbMotorDriveRevolutions(40, 0, (0.25 + linearmotorsequencecounter * 0.25 ) );
 
-	tbMotorDriveRevolutions(30, 1, 0.5);
-	osDelay(1000);
-	tbMotorDriveRevolutions(30, 0, 0.5);
-
-//	osDelay(1000);
-
-	tbMotorDriveRevolutions(30, 1, 0.75);
-	osDelay(1000);
-	tbMotorDriveRevolutions(30, 0, 0.75);
-
-//	osDelay(1000);
-
-	tbMotorDriveRevolutions(30, 1, 1);
-	osDelay(1000);
-	tbMotorDriveRevolutions(30, 0, 1);
-
-//	osDelay(1000);
-
-	tbMotorDriveRevolutions(30, 1, 1.25);
-	osDelay(1000);
-	tbMotorDriveRevolutions(30, 0, 1.25);
+    	    tbMotorDriveDuration(40, 1, (5 + linearmotorsequencecounter * 5) );
+    	    osDelay(1000);
+    	    tbMotorDriveDuration(40, 1, (5 + linearmotorsequencecounter * 5) );
+    }
   }
   /* USER CODE END 5 */
 }
