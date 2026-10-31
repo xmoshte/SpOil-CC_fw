@@ -6,9 +6,9 @@
 ../Core/Src/main.c:413:13:MX_USART2_UART_Init	2
 ../Core/Src/main.c:446:13:MX_GPIO_Init	1
 ../Core/Src/main.c:506:6:HAL_GPIO_EXTI_Callback	3
-../Core/Src/main.c:530:6:tb6612fngTask	2
-../Core/Src/main.c:564:6:ap33772sTask	1
-../Core/Src/main.c:597:6:bq25798Task	1
-../Core/Src/main.c:640:6:vnh5180aTask	1
-../Core/Src/main.c:661:6:HAL_TIM_PeriodElapsedCallback	2
-../Core/Src/main.c:679:6:Error_Handler	1
+../Core/Src/main.c:530:6:tb6612fngTask	1
+../Core/Src/main.c:565:6:ap33772sTask	1
+../Core/Src/main.c:598:6:bq25798Task	1
+../Core/Src/main.c:641:6:vnh5180aTask	1
+../Core/Src/main.c:662:6:HAL_TIM_PeriodElapsedCallback	2
+../Core/Src/main.c:680:6:Error_Handler	1
