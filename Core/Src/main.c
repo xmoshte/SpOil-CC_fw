@@ -544,7 +544,7 @@ void tb6612fngTask(void *argument)
     tbMotorDriveDuration(10, 0, 10);
 //	osDelay(500);
 
-	tbMotorDriveDuration(20, 0, 10);
+	tbMotorDriveDuration(20, 0, 8);
 //	osDelay(500);
 
 	tbMotorDriveDuration(30, 1, 7);
