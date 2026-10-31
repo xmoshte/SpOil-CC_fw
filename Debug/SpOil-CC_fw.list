@@ -5761,9 +5761,9 @@ void vnh5180aTask(void *argument)
  8002bd8:	f04f 31ff 	mov.w	r1, #4294967295
  8002bdc:	4618      	mov	r0, r3
  8002bde:	f004 f9d1 	bl	8006f84 <osSemaphoreAcquire>
-	  vnMotorDriveDuration(20000, 1, 30);
+	  vnMotorDriveDuration(20000, 0, 30);
  8002be2:	221e      	movs	r2, #30
- 8002be4:	2101      	movs	r1, #1
+ 8002be4:	2100      	movs	r1, #0
  8002be6:	f644 6020 	movw	r0, #20000	@ 0x4e20
  8002bea:	f000 fec0 	bl	800396e <vnMotorDriveDuration>
 	  osSemaphoreAcquire(vnTaskSemHandle, osWaitForever);
