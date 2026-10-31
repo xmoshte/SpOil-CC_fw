@@ -532,25 +532,19 @@ void tb6612fngTask(void *argument)
   /* USER CODE BEGIN 5 */
 	tbPmwStart();
   /* Infinite loop */
-  for(;;)
-  {
-	  tbSetStndbyPin(LOW);
+	tbSetStndbyPin(LOW);
 
 	osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
 
-    osDelay(3000);
+//    osDelay(3000);
 
-    for(int linearmotorsequencecounter = 0; linearmotorsequencecounter < 5; linearmotorsequencecounter++){
+	tbMotorDriveDuration(20, 1, 30);
+	osDelay(2000);
+	tbMotorDriveDuration(20, 0, 30);
 
-//    		tbMotorDriveRevolutions(40, 1, (0.25 + linearmotorsequencecounter * 0.25 ) );
-//    		osDelay(1000);
-//    		tbMotorDriveRevolutions(40, 0, (0.25 + linearmotorsequencecounter * 0.25 ) );
-
-    	    tbMotorDriveDuration(40, 1, (5 + linearmotorsequencecounter * 5) );
-    	    osDelay(1000);
-    	    tbMotorDriveDuration(40, 1, (5 + linearmotorsequencecounter * 5) );
-    }
-  }
+//	tbMotorDriveRevolutions(20, 1, 10);
+//	osDelay(2000);
+//	tbMotorDriveRevolutions(20, 0, 10);
   /* USER CODE END 5 */
 }
 

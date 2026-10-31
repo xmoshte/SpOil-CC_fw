@@ -5539,7 +5539,7 @@ void tb6612fngTask(void *argument)
 //    		osDelay(1000);
 //    		tbMotorDriveRevolutions(40, 0, (0.25 + linearmotorsequencecounter * 0.25 ) );
 
-    	    tbMotorDriveDuration(10, 1, (5 + linearmotorsequencecounter * 5) );
+    	    tbMotorDriveDuration(40, 1, (5 + linearmotorsequencecounter * 5) );
  8002a72:	68fb      	ldr	r3, [r7, #12]
  8002a74:	3301      	adds	r3, #1
  8002a76:	b29b      	uxth	r3, r3
@@ -5549,12 +5549,12 @@ void tb6612fngTask(void *argument)
  8002a7e:	b29b      	uxth	r3, r3
  8002a80:	461a      	mov	r2, r3
  8002a82:	2101      	movs	r1, #1
- 8002a84:	200a      	movs	r0, #10
+ 8002a84:	2028      	movs	r0, #40	@ 0x28
  8002a86:	f000 fde8 	bl	800365a <tbMotorDriveDuration>
     	    osDelay(1000);
  8002a8a:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
  8002a8e:	f004 f9dd 	bl	8006e4c <osDelay>
-    	    tbMotorDriveDuration(10, 1, (5 + linearmotorsequencecounter * 5) );
+    	    tbMotorDriveDuration(40, 1, (5 + linearmotorsequencecounter * 5) );
  8002a92:	68fb      	ldr	r3, [r7, #12]
  8002a94:	3301      	adds	r3, #1
  8002a96:	b29b      	uxth	r3, r3
@@ -5564,7 +5564,7 @@ void tb6612fngTask(void *argument)
  8002a9e:	b29b      	uxth	r3, r3
  8002aa0:	461a      	mov	r2, r3
  8002aa2:	2101      	movs	r1, #1
- 8002aa4:	200a      	movs	r0, #10
+ 8002aa4:	2028      	movs	r0, #40	@ 0x28
  8002aa6:	f000 fdd8 	bl	800365a <tbMotorDriveDuration>
     for(int linearmotorsequencecounter = 0; linearmotorsequencecounter < 5; linearmotorsequencecounter++){
  8002aaa:	68fb      	ldr	r3, [r7, #12]
