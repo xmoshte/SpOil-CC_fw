@@ -531,19 +531,22 @@ void tb6612fngTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
 	tbPmwStart();
-  /* Infinite loop */
 	tbSetStndbyPin(LOW);
-
+  /* Infinite loop */
+for(;;)
+{
 	osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
 
-	tbMotorDriveDuration(5, 0, 10);
+	tbMotorDriveDuration(4, 0, 10);
+    tbMotorDriveDuration(2, 0, 10);
 
-    tbMotorDriveDuration(10, 0, 10);
+    tbMotorDriveDuration(5, 1, 15);
 
-	tbMotorDriveDuration(20, 0, 8);
+	tbMotorDriveDuration(4, 0, 10);
+	tbMotorDriveDuration(2, 0, 10);
 
 	tbMotorDriveDuration(30, 1, 7);
-
+}
   /* USER CODE END 5 */
 }
 
