@@ -7,8 +7,8 @@
 ../Core/Src/main.c:446:13:MX_GPIO_Init	1
 ../Core/Src/main.c:506:6:HAL_GPIO_EXTI_Callback	3
 ../Core/Src/main.c:530:6:tb6612fngTask	1
-../Core/Src/main.c:560:6:ap33772sTask	1
-../Core/Src/main.c:593:6:bq25798Task	1
-../Core/Src/main.c:636:6:vnh5180aTask	1
-../Core/Src/main.c:657:6:HAL_TIM_PeriodElapsedCallback	2
-../Core/Src/main.c:675:6:Error_Handler	1
+../Core/Src/main.c:562:6:ap33772sTask	1
+../Core/Src/main.c:595:6:bq25798Task	1
+../Core/Src/main.c:638:6:vnh5180aTask	1
+../Core/Src/main.c:661:6:HAL_TIM_PeriodElapsedCallback	2
+../Core/Src/main.c:679:6:Error_Handler	1
