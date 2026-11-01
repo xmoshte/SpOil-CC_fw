@@ -546,6 +546,8 @@ for(;;)
 	tbMotorDriveDuration(2, 0, 10);
 
 	tbMotorDriveDuration(30, 1, 7);
+
+	osDelay(100);
 }
   /* USER CODE END 5 */
 }
@@ -642,6 +644,8 @@ void vnh5180aTask(void *argument)
   {
 	  osSemaphoreAcquire(vnTaskSemHandle, osWaitForever);
 	  vnMotorDriveDuration(20000, 0, 30);
+
+		osDelay(20);
   }
   /* USER CODE END vnh5180aTask */
 }
