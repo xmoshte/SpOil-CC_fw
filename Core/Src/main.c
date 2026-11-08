@@ -537,15 +537,26 @@ for(;;)
 {
 	osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
 
-	tbMotorDriveDuration(10, 0, 30);
-//    tbMotorDriveDuration(2, 0, 10);
+	tbMotorDriveDuration(15, 0, 1);
 
-//    tbMotorDriveDuration(5, 1, 15);
+	tbMotorDriveDuration(20, 1, 3);
 
-//	tbMotorDriveDuration(4, 0, 10);
-//	tbMotorDriveDuration(2, 0, 10);
+	tbMotorDriveDuration(12, 0, 6);
 
-	tbMotorDriveDuration(30, 1, 10);
+	tbMotorDriveDuration(20, 1, 3);
+
+	tbMotorDriveDuration(12, 0, 6);
+
+	tbMotorDriveDuration(20, 1, 3);
+
+    tbMotorDriveDuration(12, 0, 6);
+
+    tbMotorDriveDuration(20, 1, 3);
+
+    tbMotorDriveDuration(12, 0, 6);
+
+
+	tbMotorDriveDuration(20, 1, 15);
 
 	osDelay(2500);
 }
