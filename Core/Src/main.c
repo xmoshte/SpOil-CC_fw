@@ -537,7 +537,7 @@ for(;;)
 {
 	osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
 
-    tbMotorCycles(8, 38, 100, 5, 5);
+    tbMotorCycles(12, 38, 38, 2, 5);
 
 	osDelay(2500);
 }
@@ -635,7 +635,7 @@ void vnh5180aTask(void *argument)
   for(;;)
   {
 	  osSemaphoreAcquire(vnTaskSemHandle, osWaitForever);
-	  vnMotorDriveDuration(20000, 0, 30);
+	  vnMotorDriveDuration(20000, 0, 60);
 
 	  osDelay(2500);
   }
