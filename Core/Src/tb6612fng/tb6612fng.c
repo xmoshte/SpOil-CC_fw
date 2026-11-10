@@ -144,8 +144,8 @@ void tbMotorCycles(byte cycles, dbyte protrudeRpm, dbyte retractRpm, dbyte strok
 		}
 
 		/* Last retraction runs longer to make sure it fully homes */
-		dbyte retractSec = (i == (cycles - 1)) ? (strokeDur + strokeDurExtra)
-		                                       : strokeDur;
+		dbyte retractSec = (i == (cycles - 1)) ? (strokeDur + strokeDurExtra): strokeDur;
+
 		tbMotorDriveDuration(retractRpm, 1, retractSec);
 	}
 }
