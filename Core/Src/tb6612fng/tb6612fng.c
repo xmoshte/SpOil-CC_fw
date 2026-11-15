@@ -126,7 +126,7 @@ void tbMotorDriveDuration(qbyte rpm, byte dir, dbyte sdur){
  * @brief: One stroke with a full-duty kick-start, then the requested rpm.
  *         Total stroke time equals strokeMs (the kick is part of it).
  */
-static void tbKickStroke(dbyte rpm, byte dir, qbyte strokeMs){
+void tbKickStroke(dbyte rpm, byte dir, qbyte strokeMs){
 	qbyte kickMs = TBKICKMS;
 
 	/* Kick only when below full speed and the stroke is long enough */
