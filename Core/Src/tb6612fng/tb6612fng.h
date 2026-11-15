@@ -20,7 +20,7 @@
 
 #define MAXVOLTAGE 12
 #define TBMAXRPM 78
-#define VOLTSPERRPMTB 0.153846 /*12/300 */
+#define VOLTSPERRPMTB 0.153846 /*12/78*/
 #define NOOFREVOLUTIONS 8
 
 extern TIM_HandleTypeDef htim3;

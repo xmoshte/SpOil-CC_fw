@@ -124,8 +124,8 @@ void tbMotorDriveDuration(qbyte rpm, byte dir, dbyte sdur){
 
 /**
  * @brief: Run full protrusion/retraction cycles.
- * @param: cycles         - number of cycles. One cycle = protrusion (dir 0),
- *                          dwell at the end, then retraction (dir 1).
+ * @param: cycles         - number of cycles. One cycle = protrusion (dir 1),
+ *                          dwell at the end, then retraction (dir 0).
  * @param: protrudeRpm    - motor rpm during protrusion
  * @param: retractRpm     - motor rpm during retraction
  * @param: strokeDur      - duration of each stroke in seconds
@@ -136,7 +136,7 @@ void tbMotorDriveDuration(qbyte rpm, byte dir, dbyte sdur){
 void tbMotorCycles(byte cycles, dbyte protrudeRpm, dbyte retractRpm, dbyte strokeDur, dbyte strokeDurExtra, dbyte dwellDur){
 
 	for(byte i = 0; i < cycles; i++){
-		tbMotorDriveDuration(protrudeRpm, 0, strokeDur);
+		tbMotorDriveDuration(protrudeRpm, 1, strokeDur);
 
 		/* Hold at the end of the protrusion (motor already stopped) */
 		if(dwellDur > 0){
@@ -146,6 +146,6 @@ void tbMotorCycles(byte cycles, dbyte protrudeRpm, dbyte retractRpm, dbyte strok
 		/* Last retraction runs longer to make sure it fully homes */
 		dbyte retractSec = (i == (cycles - 1)) ? (strokeDur + strokeDurExtra): strokeDur;
 
-		tbMotorDriveDuration(retractRpm, 1, retractSec);
+		tbMotorDriveDuration(retractRpm, 0, retractSec);
 	}
 }
