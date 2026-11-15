@@ -123,6 +123,28 @@ void tbMotorDriveDuration(qbyte rpm, byte dir, dbyte sdur){
 };
 
 /**
+ * @brief: One stroke with a full-duty kick-start, then the requested rpm.
+ *         Total stroke time equals strokeMs (the kick is part of it).
+ */
+static void tbKickStroke(dbyte rpm, byte dir, qbyte strokeMs){
+	qbyte kickMs = TBKICKMS;
+
+	/* Kick only when below full speed and the stroke is long enough */
+	if(rpm > 0 && rpm < TBMAXRPM && strokeMs > kickMs){
+		tbMotorDrive(TBMAXRPM, dir);
+		osDelay(kickMs);
+		tbMotorDrive(rpm, dir);
+		osDelay(strokeMs - kickMs);
+	}
+	else{
+		tbMotorDrive(rpm, dir);
+		osDelay(strokeMs);
+	}
+
+	tbMotorStop();
+}
+
+/**
  * @brief: Run full protrusion/retraction cycles.
  * @param: cycles         - number of cycles. One cycle = protrusion (dir 1),
  *                          dwell at the end, then retraction (dir 0).
@@ -136,7 +158,7 @@ void tbMotorDriveDuration(qbyte rpm, byte dir, dbyte sdur){
 void tbMotorCycles(byte cycles, dbyte protrudeRpm, dbyte retractRpm, dbyte strokeDur, dbyte strokeDurExtra, dbyte dwellDur){
 
 	for(byte i = 0; i < cycles; i++){
-		tbMotorDriveDuration(protrudeRpm, 1, strokeDur);
+		tbKickStroke(protrudeRpm, 1, (qbyte)strokeDur * 1000);
 
 		/* Hold at the end of the protrusion (motor already stopped) */
 		if(dwellDur > 0){
@@ -144,8 +166,8 @@ void tbMotorCycles(byte cycles, dbyte protrudeRpm, dbyte retractRpm, dbyte strok
 		}
 
 		/* Last retraction runs longer to make sure it fully homes */
-		dbyte retractSec = (i == (cycles - 1)) ? (strokeDur + strokeDurExtra): strokeDur;
+		qbyte retractSec = (i == (cycles - 1)) ? ((qbyte)strokeDur + strokeDurExtra) : strokeDur;
 
-		tbMotorDriveDuration(retractRpm, 0, retractSec);
+		tbKickStroke(retractRpm, 0, retractSec * 1000);
 	}
 }

@@ -23,6 +23,9 @@
 #define VOLTSPERRPMTB 0.153846 /*12/78*/
 #define NOOFREVOLUTIONS 8
 
+/* Full-duty burst (ms) at the start of each stroke to break stiction */
+#define TBKICKMS 200
+
 extern TIM_HandleTypeDef htim3;
 
 void tbPmwStart(void); //
