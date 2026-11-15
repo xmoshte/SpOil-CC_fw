@@ -46,5 +46,5 @@ void tbMotorStndby(void);
 void tbMotorDrive(dbyte rpm, byte dir); //
 void tbMotorDriveRevolutions(dbyte rpm, byte dir, byte rev);
 void tbMotorDriveDuration(qbyte rpm, byte dir, dbyte sdur);
-void tbMotorCycles(byte cycles, dbyte protrudeRpm, dbyte retractRpm, dbyte strokeDur, dbyte strokeDurExtra, dbyte dwellDur);
+void tbMotorCycles(byte cycles, dbyte protrudeRpm, dbyte retractRpm, dbyte protrudeDur, dbyte retractDur, dbyte strokeDurExtra, dbyte dwellDur);
 #endif /*TB6612FNG_H */

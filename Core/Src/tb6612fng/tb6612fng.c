@@ -150,15 +150,16 @@ static void tbKickStroke(dbyte rpm, byte dir, qbyte strokeMs){
  *                          dwell at the end, then retraction (dir 0).
  * @param: protrudeRpm    - motor rpm during protrusion
  * @param: retractRpm     - motor rpm during retraction
- * @param: strokeDur      - duration of each stroke in seconds
+ * @param: protrudeDur    - duration of each protrusion stroke in seconds
+ * @param: retractDur     - duration of each retraction stroke in seconds
  * @param: strokeDurExtra - extra seconds added to the last retraction
  * @param: dwellDur       - seconds to stay at the end of the protrusion
  *                          before retracting
  */
-void tbMotorCycles(byte cycles, dbyte protrudeRpm, dbyte retractRpm, dbyte strokeDur, dbyte strokeDurExtra, dbyte dwellDur){
+void tbMotorCycles(byte cycles, dbyte protrudeRpm, dbyte retractRpm, dbyte protrudeDur, dbyte retractDur, dbyte strokeDurExtra, dbyte dwellDur){
 
 	for(byte i = 0; i < cycles; i++){
-		tbKickStroke(protrudeRpm, 1, (qbyte)strokeDur * 1000);
+		tbKickStroke(protrudeRpm, 1, (qbyte)protrudeDur * 1000);
 
 		/* Hold at the end of the protrusion (motor already stopped) */
 		if(dwellDur > 0){
@@ -166,7 +167,7 @@ void tbMotorCycles(byte cycles, dbyte protrudeRpm, dbyte retractRpm, dbyte strok
 		}
 
 		/* Last retraction runs longer to make sure it fully homes */
-		qbyte retractSec = (i == (cycles - 1)) ? ((qbyte)strokeDur + strokeDurExtra) : strokeDur;
+		qbyte retractSec = (i == (cycles - 1)) ? ((qbyte)retractDur + strokeDurExtra) : retractDur;
 
 		tbKickStroke(retractRpm, 0, retractSec * 1000);
 	}

@@ -13,4 +13,4 @@
 ../Core/Src/tb6612fng/tb6612fng.c:109:6:tbMotorDriveRevolutions	24	static
 ../Core/Src/tb6612fng/tb6612fng.c:117:6:tbMotorDriveDuration	24	static
 ../Core/Src/tb6612fng/tb6612fng.c:129:13:tbKickStroke	24	static
-../Core/Src/tb6612fng/tb6612fng.c:158:6:tbMotorCycles	32	static
+../Core/Src/tb6612fng/tb6612fng.c:159:6:tbMotorCycles	32	static

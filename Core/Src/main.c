@@ -537,7 +537,7 @@ for(;;)
 {
 	osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
 
-    tbMotorCycles(12, 60, 60, 2, 5, 10);
+    tbMotorCycles(12, 50, 76, 4, 2, 5, 10);
 
 
 	osDelay(2500);
