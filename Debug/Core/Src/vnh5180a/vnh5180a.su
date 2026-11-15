@@ -11,5 +11,5 @@
 ../Core/Src/vnh5180a/vnh5180a.c:117:6:vnMotorBrakeToGnd	16	static
 ../Core/Src/vnh5180a/vnh5180a.c:136:6:vnMotorBrakeToVcc	16	static
 ../Core/Src/vnh5180a/vnh5180a.c:156:6:vnMotorDrive	16	static
-../Core/Src/vnh5180a/vnh5180a.c:166:6:vnMotorDriveDuration	24	static
+../Core/Src/vnh5180a/vnh5180a.c:166:6:vnMotorDriveDuration	32	static
 ../Core/Src/vnh5180a/vnh5180a.c:174:6:csEnOrDis	16	static

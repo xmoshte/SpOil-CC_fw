@@ -163,8 +163,8 @@ void vnMotorDrive(qbyte rpm, byte dir){
 	}
 }
 
-void vnMotorDriveDuration(qbyte rpm, byte dir, dbyte sdur){
-	dbyte msec = sdur * 1000;
+void vnMotorDriveDuration(qbyte rpm, byte dir, qbyte sdur){
+	qbyte msec = sdur * 1000;
 
 	vnMotorDrive(rpm, dir);
 	osDelay(msec);

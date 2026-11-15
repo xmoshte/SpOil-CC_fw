@@ -43,7 +43,7 @@ void vnMotorBrakeToGnd(void);
 void vnMotorBrakeToVcc(void);
 
 void vnMotorDrive(qbyte rpm, byte dir);
-void vnMotorDriveDuration(qbyte rpm, byte dir, dbyte sdur);
+void vnMotorDriveDuration(qbyte rpm, byte dir, qbyte sdur);
 
 void csEnOrDis(byte enOrDis);
 
