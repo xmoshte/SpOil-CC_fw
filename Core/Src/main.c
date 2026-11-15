@@ -537,9 +537,12 @@ for(;;)
 {
 	osSemaphoreAcquire(tbTaskSemHandle, osWaitForever);
 
-	tbMotorDriveDuration(18, 1, 5);
+	tbMotorDriveDuration(40, 1, 20);
 
-    tbMotorCycles(12, 18, 18, 4, 2, 5, 10);
+//    tbMotorCycles(12, 18, 18, 4, 2, 5, 10);
+	osDelay(3000);
+
+    tbMotorDriveDuration(40, 0, 20);
 
 	osDelay(2500);
 }
